@@ -1,0 +1,40 @@
+	It was hypothesized that in times of financial crisis, people who have been married for a
+shorter amount of time are more likely to get divorced. In order to test this out, data about
+unemployment rates between 1980 and 2010 (from https://data.bls.gov/pdq/SurveyOutputServlet)
+and about divorces in Texas (from http://www.dshs.texas.gov/vs/marriagedivorce/mdindx.shtm,
+which is stored in /data/raw) during those same years were used.
+
+      The rate of unemployment was calculated by adding up all the per-month data in each year,
+via awk. Next, using python, a few steps were taken in order to compute the average marriage length
+for marriages that ended due to divorce. First, the date that a couple got married was subtracted
+from the date of their divorce in order to find the length of that couple’s marriage. Then, in
+another python file, the total number of length of marriages for one year was divided by the amount
+of divorces that happened in that same year. This average length of marriage file was then combined
+with the unemployment rate file, using spark, in order to get ready for plotting the graph. It put
+together all of the information for each year. Using matplotlib, the data was put into a scatter plot.
+The x-axis represents the unemployment rate, and the y-axis represents the average length of marriages.
+
+    Looking at the scatter plot, there is a very high negative correlation between divorce and unemployment
+rates. When the unemployment rate is high, couples who have not been married for so long, are more likely
+to get divorced. In other words, people who have been married longer, are less likely to divorce during
+harder financial times because their marriage is more stable and doesn’t simply end due to money since
+they already had more time to develop their relationship.
+
+     From 1980 until 1986, the average marriage length for those who divorced during that time is pretty
+stable, even though the unemployment rates change drastically. This may be due to the two short
+recessions that occurred during the early 1980’s. Since each recession was so short, a possible
+explanation for why the marriage lengths stayed stable even during such a time of financial crisis
+could be that in order for a change to affect marriages, the financial crisis needs to be for a longer
+period of time.
+
+       However, even with these outliers, there is still a highly strong negative correlation (from
+outside calculation, it was seen that it was -.42) throughout the 30 year range. (Without the outliers,
+the correlation was .50.) It should also be noted that this graph cannot be taken as evidence for the
+hypothesis on its own because over time people have tended to stay married for longer before divorcing.
+This can be seen when only graphing the years and marriage lengths accordingly (without the unemployment
+rate) - the correlation for marriage versus year is .98, which is almost a perfect correlation. 
+
+      As seen from the graph and above discussion, there is a very big negative correlation between
+unemployment rates and the average length of marriages that end in divorce. Meaning, as the unemployment
+rate goes up, the average length of marriages goes down. People who have been married for a shorter amount
+of time are more likely to divorce in times of financial crisis.
